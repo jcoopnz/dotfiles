@@ -32,15 +32,15 @@ This will:
 
 After running `setup.sh`, you'll need to edit a few things:
 
-**Work environment variables** — Create `~/.work-env-vars.sh` and uncomment line 10 in `.zshrc` to source it.
+1. **Work environment variables** — Create `~/.work-env-vars.sh` and uncomment line 10 in `.zshrc` to source it.
 
-**Zsh theme git emails** — Update the email addresses in `my.zsh-theme` so the prompt shows the correct git account:
+2. **Zsh theme git emails** — Update the email addresses in `my.zsh-theme` so the prompt shows the correct git account:
 ```bash
 if [[ "$email" == "work@email.com" ]]; then      # <- your work email
 if [[ "$email" == "personal@email.com" ]]; then  # <- your personal email
 ```
 
-**Lazygit author colors** — Add collaborator names in `lazygit.yml`:
+3. **Lazygit author colors** — Add collaborator names in `lazygit.yml`:
 ```yaml
 authorColors:
   "Colleague Name": blue  # replace "friends"
