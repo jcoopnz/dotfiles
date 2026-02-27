@@ -1,4 +1,7 @@
 #!/bin/bash
+set -e
+
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Install Homebrew if not present
 if ! command -v brew &> /dev/null; then
@@ -7,25 +10,25 @@ if ! command -v brew &> /dev/null; then
 fi
 
 # Install Homebrew packages
-brew bundle --file=$(pwd)/Brewfile
+brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 # Symlink dotfiles
-ln -s -f $(pwd)/zshrc         ~/.zshrc
-ln -s -f $(pwd)/aliases.sh    ~/.aliases.sh
-ln -s -f $(pwd)/my.zsh-theme  ~/.oh-my-zsh/themes/my.zsh-theme
+ln -s -f "$DOTFILES_DIR/zshrc"         ~/.zshrc
+ln -s -f "$DOTFILES_DIR/aliases.sh"    ~/.aliases.sh
+ln -s -f "$DOTFILES_DIR/my.zsh-theme"  ~/.oh-my-zsh/themes/my.zsh-theme
 touch ~/.hushlogin
 
 # Neovim
 mkdir -p ~/.config/nvim
-ln -s -f $(pwd)/init.lua      ~/.config/nvim/init.lua
+ln -s -f "$DOTFILES_DIR/init.lua"      ~/.config/nvim/init.lua
 
 # Lazygit
 mkdir -p ~/.config/lazygit
-ln -s -f $(pwd)/lazygit.yml   ~/.config/lazygit/config.yml
+ln -s -f "$DOTFILES_DIR/lazygit.yml"   ~/.config/lazygit/config.yml
 
 # Ghostty
 mkdir -p ~/.config/ghostty
-ln -s -f $(pwd)/ghostty.config ~/.config/ghostty/config
+ln -s -f "$DOTFILES_DIR/ghostty.config" ~/.config/ghostty/config
 
 # macOS settings
 defaults write -g InitialKeyRepeat -int 10

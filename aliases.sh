@@ -1,5 +1,5 @@
 # General aliases
-alias rl="source ~/.zshrc && echo "Re-sourced config ✅""
+alias rl="source ~/.zshrc && echo 'Re-sourced config ✅'"
 alias rc="n ~/.zshrc"
 alias n="nvim"
 alias lg="lazygit"
