@@ -1,0 +1,30 @@
+notARepository: quit
+
+git:
+  mainBranches:
+    - master
+    - main
+  autoRefresh: true
+
+gui:
+  showPanelJumps: true
+  showCommandLog: false
+  filterMode: substring
+  scrollPastBottom: false
+  nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - blue
+      - bold
+    inactiveBorderColor:
+      - green
+    selectedLineBgColor:
+      - reverse
+  authorColors:
+    "Jordan Cooper": green
+    "friends": blue
+    # other authors
+    "*": "#666666"
+
+os:
+  shellFunctionsFile: ~/.aliases.sh
