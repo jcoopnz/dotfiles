@@ -13,6 +13,7 @@ brew bundle --file=$(pwd)/Brewfile
 ln -s -f $(pwd)/zshrc         ~/.zshrc
 ln -s -f $(pwd)/aliases.sh    ~/.aliases.sh
 ln -s -f $(pwd)/my.zsh-theme  ~/.oh-my-zsh/themes/my.zsh-theme
+touch ~/.hushlogin
 
 # Neovim
 mkdir -p ~/.config/nvim
