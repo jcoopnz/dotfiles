@@ -30,35 +30,29 @@ This will:
 
 ## Manual Configuration
 
-After running `setup.sh`, you'll need to edit these files:
+After running `setup.sh`, you'll need to edit a few things:
 
-### `~/.work-env-vars.sh`
-Create this file. It's sourced by `.zshrc` (uncomment line 10 to enable).
+**Work environment variables** — Create `~/.work-env-vars.sh` and uncomment line 10 in `.zshrc` to source it.
 
-### `~/.oh-my-zsh/themes/my.zsh-theme`
-Update the email addresses for the git account indicator in your prompt:
+**Zsh theme git emails** — Update the email addresses in `my.zsh-theme` so the prompt shows the correct git account:
 ```bash
-if [[ "$email" == "work@email.com" ]]; then # replace email
-if [[ "$email" == "personal@email.com" ]]; then # replace email
+if [[ "$email" == "work@email.com" ]]; then      # <- your work email
+if [[ "$email" == "personal@email.com" ]]; then  # <- your personal email
 ```
 
-### `~/.config/lazygit/config.yml`
-Add collaborator names for colored git authors:
+**Lazygit author colors** — Add collaborator names in `lazygit.yml`:
 ```yaml
 authorColors:
   "Colleague Name": blue  # replace "friends"
 ```
 
-## Terminal
+## Fixing nvim
 
-I use [Ghostty](https://ghostty.org) as my terminal. The config is included and symlinked automatically by `setup.sh`.
-
-## Uninstalling Neovim
-
-To completely remove Neovim and start fresh:
+Sometimes you just need to start fresh. Leaving this here as a handy reference.
 
 ```bash
 rm -rf ~/.config/nvim
+
 rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
 rm -rf ~/.cache/nvim
