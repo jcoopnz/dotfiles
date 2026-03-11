@@ -106,6 +106,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- hide copilot when blink has a suggestion
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuOpen',
+  callback = function()
+    pcall(vim.fn['copilot#Clear'])
+    vim.b.copilot_enabled = false
+  end,
+})
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuClose',
+  callback = function()
+    vim.b.copilot_enabled = true
+  end,
+})
+
 require("lazy").setup({
   spec = {
     {
@@ -167,7 +182,14 @@ require("lazy").setup({
                 ["<Up>"] = { "history_back", mode = { "i", "n" } },
               },
             },
-          }
+          },
+          sources = {
+            explorer = {
+              layout = {
+                layout = { width = 60 }
+              },
+            },
+          },
         },
         words = { enabled = true },
       },
@@ -198,7 +220,7 @@ require("lazy").setup({
         { "<LEADER>sh", function() Snacks.picker.help() end,                            desc = "Help" },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,                     desc = "Symbols" },
         { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,                    desc = "Open buffers" },
-        { "<leader>sg", function() Snacks.picker.git_diff() end,                        desc = "Git Diff (Hunks)" },
+        { "<leader>sd", function() Snacks.picker.git_diff() end,                        desc = "Git Diff (Hunks)" },
         -- LSP
         { "gd",         function() Snacks.picker.lsp_definitions() end,                 desc = "Goto definition" },
         { "gr",         function() Snacks.picker.lsp_references() end,                  desc = "Goto references", nowait = true },
@@ -270,6 +292,28 @@ require("lazy").setup({
           "typescript",
           "vim",
           "yaml"
+        })
+      end,
+    },
+
+    {
+      "github/copilot.vim",
+      event = "InsertEnter",
+    },
+
+    {
+      "mfussenegger/nvim-lint",
+      event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+      config = function()
+        local lint = require("lint")
+        lint.linters_by_ft = {
+          javascript = { "eslint" },
+          typescript = { "eslint" },
+        }
+        vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+          callback = function()
+            require("lint").try_lint()
+          end,
         })
       end,
     },
@@ -404,6 +448,7 @@ require("lazy").setup({
         { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame",  silent = true },
         { "]h",         ":Gitsigns next_hunk<CR>",                 desc = "Next hunk",     silent = true },
         { "[h",         ":Gitsigns prev_hunk<CR>",                 desc = "Previous hunk", silent = true },
+        { "<LEADER>hr", ":Gitsigns reset_hunk<CR>",                desc = "Reset hunk",    silent = true },
       }
     },
 
@@ -431,25 +476,8 @@ require("lazy").setup({
         },
       },
       opts = {
-        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte", "angularls", "copilot" },
+        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte", "angularls" },
       },
-    },
-
-    {
-      "mfussenegger/nvim-lint",
-      event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-      config = function()
-        local lint = require("lint")
-        lint.linters_by_ft = {
-          javascript = { "eslint" },
-          typescript = { "eslint" },
-        }
-        vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-          callback = function()
-            require("lint").try_lint()
-          end,
-        })
-      end,
     },
 
     {
