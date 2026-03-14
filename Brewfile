@@ -1,21 +1,21 @@
-# ---- WORK ----
-# Taps
-tap "mongodb/brew"
-# Development
-brew "gh"
-brew "mongodb-database-tools"
-cask "microsoft-azure-storage-explorer"
-cask "mongodb-compass"
-cask "ngrok"
-cask "postman"
-# Misc utilities
-cask "breaktimer"
-# Programs
-cask "brave-browser"
-cask "firefox"
-cask "google-chrome"
-cask "lm-studio"
-cask "slack"
+# # ---- WORK ----
+# # Taps
+# tap "mongodb/brew"
+# # Development
+# brew "gh"
+# brew "mongodb-database-tools"
+# cask "microsoft-azure-storage-explorer"
+# cask "mongodb-compass"
+# cask "ngrok"
+# cask "postman"
+# # Misc utilities
+# cask "breaktimer"
+# # Programs
+# cask "brave-browser"
+# cask "firefox"
+# cask "google-chrome"
+# cask "lm-studio"
+# cask "slack"
 
 # ---- PERSONAL ----
 # Editing
