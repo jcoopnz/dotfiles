@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Update frequency (in days)
 zstyle ":omz:update" frequency 5
 
-ZSH_THEME="my"
+ZSH_THEME="my-custom"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases.sh

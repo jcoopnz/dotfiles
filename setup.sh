@@ -15,7 +15,7 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 # Symlink dotfiles
 ln -s -f "$DOTFILES_DIR/zshrc"         ~/.zshrc
 ln -s -f "$DOTFILES_DIR/aliases.sh"    ~/.aliases.sh
-ln -s -f "$DOTFILES_DIR/my.zsh-theme"  ~/.oh-my-zsh/themes/my.zsh-theme
+ln -s -f "$DOTFILES_DIR/my-custom.zsh-theme"  ~/.oh-my-zsh/themes/my-custom.zsh-theme
 touch ~/.hushlogin
 
 # Neovim
