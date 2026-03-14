@@ -9,10 +9,10 @@ alias buu="brew update && brew upgrade && brew cleanup"
 alias rsp="ssh jordan@plexpi.local"
 
 # Work aliases
-alias wv="n ~/.work-env-vars.sh"
-alias bd="clear && npx nx build-dev"
-alias bw="clear && npx nx build-watch"
-alias sa="clear && npx nx serve-all"
+# alias wv="n ~/.work-env-vars.sh"
+# alias bd="clear && npx nx build-dev"
+# alias bw="clear && npx nx build-watch"
+# alias sa="clear && npx nx serve-all"
 
 # lsport <port>
 function lsport {
