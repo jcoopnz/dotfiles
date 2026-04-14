@@ -326,10 +326,11 @@ require("lazy").setup({
         options = {
           always_show_bufferline = false,
           diagnostics = "nvim_lsp",
-          persist_buffer_sort = true,
-          sort_by = "insert_after_current",
-          truncate_names = false,
           indicator = { style = 'underline' },
+          persist_buffer_sort = true,
+          show_tab_indicators = false,
+          sort_by = "directory",
+          truncate_names = false,
         },
       },
       keys = {
@@ -577,11 +578,6 @@ require("lazy").setup({
           desc = "Search and replace",
         },
       },
-    },
-
-    {
-      "ThePrimeagen/vim-be-good",
-      cmd = "VimBeGood",
     },
 
     {
