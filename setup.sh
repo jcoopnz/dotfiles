@@ -57,7 +57,7 @@ mkdir -p ~/.config/ghostty
 ln -s -f "$DOTFILES_DIR/ghostty.config" ~/.config/ghostty/config
 
 # macOS settings
-defaults write -g InitialKeyRepeat -int 10
+defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 1
 
 # Dock settings
