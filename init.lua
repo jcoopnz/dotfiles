@@ -445,12 +445,20 @@ require("lazy").setup({
           virt_text_pos = "right_align",
           delay = 700,
         },
+        signs = {
+          add       = { text = '+' },
+          change    = { text = '~' },
+          delete    = { text = 'd_' },
+          topdelete = { text = 'd‾' },
+          untracked = { text = '┆' },
+        },
       },
       keys = {
         { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame",  silent = true },
         { "]h",         ":Gitsigns next_hunk<CR>",                 desc = "Next hunk",     silent = true },
         { "[h",         ":Gitsigns prev_hunk<CR>",                 desc = "Previous hunk", silent = true },
         { "<LEADER>hr", ":Gitsigns reset_hunk<CR>",                desc = "Reset hunk",    silent = true },
+        { "<LEADER>hp", ":Gitsigns preview_hunk_inline<CR>",       desc = "Preview hunk",  silent = true },
       }
     },
 
