@@ -216,23 +216,23 @@ require("lazy").setup({
           mode = { "n", "x" }
         },
         -- find
-        { "<leader>sf", function() snacks.picker.git_files() end,       desc = "git files" },
-        { "<leader>sh", function() snacks.picker.help() end,            desc = "help" },
-        { "<leader>ss", function() snacks.picker.lsp_symbols() end,     desc = "symbols" },
-        { "<leader>sb", function() snacks.picker.grep_buffers() end,    desc = "open buffers" },
-        { "<leader>sd", function() snacks.picker.git_diff() end,        desc = "git diff (hunks)" },
-        { "<leader>sk", function() snacks.picker.keymaps() end,         desc = "git keymaps" },
+        { "<leader>sf", function() Snacks.picker.git_files() end,       desc = "git files" },
+        { "<leader>sh", function() Snacks.picker.help() end,            desc = "help" },
+        { "<leader>ss", function() Snacks.picker.lsp_symbols() end,     desc = "symbols" },
+        { "<leader>sb", function() Snacks.picker.grep_buffers() end,    desc = "open buffers" },
+        { "<leader>sd", function() Snacks.picker.git_diff() end,        desc = "git diff (hunks)" },
+        { "<leader>sk", function() Snacks.picker.keymaps() end,         desc = "git keymaps" },
         -- lsp
-        { "gd",         function() snacks.picker.lsp_definitions() end, desc = "goto definition" },
-        { "gr",         function() snacks.picker.lsp_references() end,  desc = "goto references", nowait = true },
-        { "<leader>ul", function() snacks.picker.lsp_config() end,      desc = "lsp config" },
+        { "gd",         function() Snacks.picker.lsp_definitions() end, desc = "goto definition" },
+        { "gr",         function() Snacks.picker.lsp_references() end,  desc = "goto references", nowait = true },
+        { "<leader>ul", function() Snacks.picker.lsp_config() end,      desc = "lsp config" },
         -- buffer
-        { "<leader>bd", function() snacks.bufdelete() end,              desc = "delete" },
-        { "<leader>bo", function() snacks.bufdelete.other() end,        desc = "delete others" },
+        { "<leader>bd", function() Snacks.bufdelete() end,              desc = "delete" },
+        { "<leader>bo", function() Snacks.bufdelete.other() end,        desc = "delete others" },
         -- other
-        { "<leader>nh", function() snacks.notifier.show_history() end,  desc = "history" },
-        { "<leader>nd", function() snacks.notifier.hide() end,          desc = "dismiss all" },
-        { "<leader>rf", function() snacks.rename.rename_file() end,     desc = "rename file" },
+        { "<leader>nh", function() Snacks.notifier.show_history() end,  desc = "history" },
+        { "<leader>nd", function() Snacks.notifier.hide() end,          desc = "dismiss all" },
+        { "<leader>rf", function() Snacks.rename.rename_file() end,     desc = "rename file" },
       },
       init = function()
         vim.api.nvim_create_autocmd("User", {
