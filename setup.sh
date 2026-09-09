@@ -47,6 +47,7 @@ fi
 # Neovim
 mkdir -p ~/.config/nvim
 ln -s -f "$DOTFILES_DIR/init.lua"      ~/.config/nvim/init.lua
+ln -s -f "$DOTFILES_DIR/lazy-lock.json"      ~/.config/nvim/lazy-lock.json
 
 # Lazygit
 mkdir -p ~/.config/lazygit
