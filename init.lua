@@ -106,6 +106,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- inline diagnostic messages
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true,
+  },
+  virtual_text = false,
+})
+
 require("lazy").setup({
   spec = {
     {
@@ -499,22 +507,6 @@ require("lazy").setup({
           },
         }
       end,
-    },
-
-    {
-      "rachartier/tiny-inline-diagnostic.nvim",
-      event = "VeryLazy",
-      opts = {
-        options = {
-          multilines = {
-            enabled = true,
-            severity = {
-              vim.diagnostic.severity.WARN,
-              vim.diagnostic.severity.ERROR,
-            },
-          }
-        }
-      },
     },
 
     {
