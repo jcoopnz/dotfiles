@@ -115,6 +115,7 @@ vim.diagnostic.config({
 })
 
 require("lazy").setup({
+  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
   spec = {
     {
       "folke/tokyonight.nvim",
@@ -549,12 +550,4 @@ require("lazy").setup({
       },
     },
   },
-})
-
--- pin plugins to exact commit recorded in lock file
-vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyInstall",
-  callback = function()
-    require("lazy").restore({ show = false })
-  end,
 })
