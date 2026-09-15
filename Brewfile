@@ -4,7 +4,6 @@ brew "fzf"
 brew "lazygit"
 brew "neovim"
 brew "ripgrep"
-brew "tree-sitter"
 cask "copilot-cli"
 cask "ghostty"
 
@@ -25,3 +24,7 @@ cask "bitwarden"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
+
+# Mac App Store
+mas "SponsorBlock for Safari", id: 1573461917
+mas "uBlock Origin Lite", id: 6745342698
