@@ -4,11 +4,7 @@ brew "fzf"
 brew "lazygit"
 brew "neovim"
 brew "ripgrep"
-cask "copilot-cli"
 cask "ghostty"
-
-# Services
-brew "docker"
 
 # Development
 brew "mas"
