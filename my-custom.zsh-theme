@@ -10,9 +10,7 @@ current_node_version() {
 # Function to determine current git account
 current_git_account() {
   local email=$(git config user.email)
-  if [[ "$email" == "work@email.com" ]]; then
-    echo "work"
-  elif [[ "$email" == "personal@email.com" ]]; then
+  if [[ "$email" == "email@gmail.com" ]]; then
     echo "personal"
   else
     echo "UNKNOWN GIT ACC"
