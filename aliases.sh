@@ -3,7 +3,7 @@ alias rl="source ~/.zshrc && echo 'Re-sourced config ✅'"
 alias rc="n ~/.zshrc"
 alias n="nvim"
 alias lg="lazygit"
-alias buu="brew update && brew upgrade && brew cleanup"
+alias rsp="ssh jordan@plexpi.local"
 
 # lsport <port>
 function lsport {
