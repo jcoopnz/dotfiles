@@ -16,5 +16,12 @@ function killpid {
   kill -9 "$pid"
 }
 
-# Profile-specific aliases (symlinked by setup.sh)
-[ -f ~/.aliases-ext.sh ] && source ~/.aliases-ext.sh
+# PERSONAL ------------------------------------
+# Raspberry Pi
+alias rsp="ssh jordan@plexpi.local"
+
+# # WORK ----------------------------------------
+# alias wv="n ~/.work-env-vars.sh"
+# alias bd="clear && npx nx build-dev"
+# alias bw="clear && npx nx build-watch"
+# alias sa="clear && npx nx serve-all"

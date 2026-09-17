@@ -180,9 +180,8 @@ require("lazy").setup({
           },
           sources = {
             explorer = {
-              layout = {
-                layout = { width = 60 }
-              },
+              auto_close = true,
+              layout = { layout = { width = 60 } },
             },
           },
         },
@@ -213,7 +212,6 @@ require("lazy").setup({
         -- find
         { "<leader>sf", function() Snacks.picker.git_files() end,       desc = "git files" },
         { "<leader>sh", function() Snacks.picker.help() end,            desc = "help" },
-        { "<leader>ss", function() Snacks.picker.lsp_symbols() end,     desc = "symbols" },
         { "<leader>sb", function() Snacks.picker.grep_buffers() end,    desc = "open buffers" },
         { "<leader>sd", function() Snacks.picker.git_diff() end,        desc = "git diff (hunks)" },
         { "<leader>sk", function() Snacks.picker.keymaps() end,         desc = "git keymaps" },
@@ -266,45 +264,9 @@ require("lazy").setup({
       build = ":TSUpdate",
       config = function()
         require("nvim-treesitter").install({
-          "angular",
-          "bash",
-          "css",
-          "git_config",
-          "git_rebase",
-          "gitignore",
-          "go",
-          "html",
-          "http",
-          "javascript",
-          "json",
-          "lua",
-          "markdown",
-          "markdown_inline",
-          "pug",
-          "regex",
-          "scss",
-          "svelte",
-          "tsx",
-          "typescript",
-          "vim",
-          "yaml"
-        })
-      end,
-    },
-
-    {
-      "mfussenegger/nvim-lint",
-      event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-      config = function()
-        local lint = require("lint")
-        lint.linters_by_ft = {
-          javascript = { "eslint" },
-          typescript = { "eslint" },
-        }
-        vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-          callback = function()
-            require("lint").try_lint()
-          end,
+          "angular", "bash", "css", "git_config", "git_rebase", "gitignore", "go",
+          "html", "http", "javascript", "json", "lua", "markdown", "markdown_inline",
+          "pug", "regex", "scss", "svelte", "tsx", "typescript", "vim", "yaml"
         })
       end,
     },
@@ -325,28 +287,25 @@ require("lazy").setup({
         },
       },
       keys = {
-        { "L",          ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
-        { "H",          ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
-        { ">",          ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
-        { "<",          ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
-        { "<LEADER>bp", ":BufferLineTogglePin<CR>", desc = "Pin buffer",          silent = true },
+        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
+        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
+        { ">", ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
+        { "<", ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
       },
     },
 
     {
-      'andymass/vim-matchup',
-      event = "VeryLazy",
-      opts = {
-        treesitter = { stopline = 500 }
-      }
-    },
-
-    {
-      "echasnovski/mini.nvim",
+      "nvim-mini/mini.nvim",
       version = false,
       event = "VeryLazy",
       config = function()
         require("mini.ai").setup()
+        require("mini.completion").setup({
+          delay = { info = math.huge },
+          lsp_completion = {
+            source_func = "omnifunc",
+          },
+        })
         require("mini.icons").setup()
         require("mini.move").setup({
           mappings = {
@@ -373,16 +332,13 @@ require("lazy").setup({
       dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
       opts = {
         lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          -- override markdown rendering so other plugins use **Treesitter**
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
           },
         },
-        presets = {
-          lsp_doc_border = true,
-        },
+        presets = { lsp_doc_border = true },
         routes = { {
           view = "notify",
           filter = { event = "msg_showmode" },
@@ -440,7 +396,7 @@ require("lazy").setup({
           change    = { text = '~' },
           delete    = { text = 'd_' },
           topdelete = { text = 'd‾' },
-          untracked = { text = '┆' },
+          untracked = { text = 'n' },
         },
       },
       keys = {
@@ -456,11 +412,7 @@ require("lazy").setup({
       "mason-org/mason-lspconfig.nvim",
       event = "VeryLazy",
       dependencies = {
-        {
-          "mason-org/mason.nvim",
-          lazy = true,
-          opts = {},
-        },
+        { "mason-org/mason.nvim", lazy = true, opts = {} },
         {
           "neovim/nvim-lspconfig",
           lazy = true,
@@ -484,47 +436,22 @@ require("lazy").setup({
       "nvim-lualine/lualine.nvim",
       event = "VeryLazy",
       opts = function()
-        local noice = require("noice")
         return {
           options = {
             theme = 'tokyonight',
             globalstatus = true,
-            disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+            disabled_filetypes = { statusline = { "snacks_dashboard" } },
           },
           sections = {
             lualine_a = { "mode" },
-            lualine_b = { "diff", "diagnostics" },
-            lualine_c = { "", { "filename", path = 1, shorting_target = 60 } },
-            lualine_x = {
-              {
-                ---@diagnostic disable-next-line
-                noice.api.status.command.get,
-                ---@diagnostic disable-next-line
-                cond = noice.api.status.command.has,
-                color = { fg = "#ff9e64" },
-              },
-              "lsp_status"
-            },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = { "lsp_status" },
+            lualine_y = { "diff", "diagnostics" },
             lualine_z = { "location" },
           },
         }
       end,
-    },
-
-    {
-      "saghen/blink.cmp",
-      version = "1.*",
-      event = "VeryLazy",
-      dependencies = {
-        { "rafamadriz/friendly-snippets", lazy = true },
-      },
-      opts = {
-        keymap = { preset = "default" },
-        fuzzy = { implementation = "prefer_rust" },
-        sources = {
-          default = { 'lsp', 'path', 'snippets', 'buffer' },
-        },
-      },
     },
 
     {
