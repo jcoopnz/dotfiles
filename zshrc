@@ -8,6 +8,9 @@ ZSH_THEME="my-custom"
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases.sh
 
+# # WORK ----------------------------------------
+# source ~/.work-env-vars.sh
+
 # Better <C-r> for searching previously run commands
 source <(fzf --zsh)
 HISTFILE=~/.zsh_history

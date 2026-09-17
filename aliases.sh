@@ -16,9 +16,6 @@ function killpid {
   kill -9 "$pid"
 }
 
-# Profile-specific aliases (symlinked by setup.sh)
-[ -f ~/.aliases-ext.sh ] && source ~/.aliases-ext.sh
-
 # PERSONAL ------------------------------------
 # Raspberry Pi
 alias rsp="ssh jordan@plexpi.local"
