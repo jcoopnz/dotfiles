@@ -294,7 +294,6 @@ require("lazy").setup({
         { "H",          ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
         { ">",          ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
         { "<",          ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
-        { "<LEADER>bp", ":BufferLineTogglePin<CR>", desc = "Pin buffer",          silent = true },
       },
     },
 
