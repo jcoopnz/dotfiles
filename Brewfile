@@ -25,3 +25,29 @@ cask "bitwarden"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
+
+# PERSONAL ------------------------------------
+mas "SponsorBlock for Safari", id: 1573461917
+mas "uBlock Origin Lite", id: 6745342698
+
+# # WORK ----------------------------------------
+# # Taps
+# tap "mongodb/brew"
+#
+# # Development
+# brew "gh"
+# brew "mongodb-database-tools"
+# cask "microsoft-azure-storage-explorer"
+# cask "mongodb-compass"
+# cask "ngrok"
+# cask "postman"
+#
+# # Misc utilities
+# cask "breaktimer"
+#
+# # Programs
+# cask "brave-browser"
+# cask "firefox"
+# cask "google-chrome"
+# cask "lm-studio"
+# cask "slack"
