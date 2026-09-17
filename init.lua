@@ -181,9 +181,7 @@ require("lazy").setup({
           sources = {
             explorer = {
               auto_close = true,
-              layout = {
-                layout = { width = 60 }
-              },
+              layout = { layout = { width = 60 } },
             },
           },
         },
@@ -214,7 +212,6 @@ require("lazy").setup({
         -- find
         { "<leader>sf", function() Snacks.picker.git_files() end,       desc = "git files" },
         { "<leader>sh", function() Snacks.picker.help() end,            desc = "help" },
-        { "<leader>ss", function() Snacks.picker.lsp_symbols() end,     desc = "symbols" },
         { "<leader>sb", function() Snacks.picker.grep_buffers() end,    desc = "open buffers" },
         { "<leader>sd", function() Snacks.picker.git_diff() end,        desc = "git diff (hunks)" },
         { "<leader>sk", function() Snacks.picker.keymaps() end,         desc = "git keymaps" },
@@ -290,10 +287,10 @@ require("lazy").setup({
         },
       },
       keys = {
-        { "L",          ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
-        { "H",          ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
-        { ">",          ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
-        { "<",          ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
+        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
+        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
+        { ">", ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
+        { "<", ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
       },
     },
 
@@ -303,7 +300,12 @@ require("lazy").setup({
       event = "VeryLazy",
       config = function()
         require("mini.ai").setup()
-        require("mini.completion").setup()
+        require("mini.completion").setup({
+          delay = { info = math.huge },
+          lsp_completion = {
+            source_func = "omnifunc",
+          },
+        })
         require("mini.icons").setup()
         require("mini.move").setup({
           mappings = {
@@ -330,16 +332,13 @@ require("lazy").setup({
       dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
       opts = {
         lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          -- override markdown rendering so other plugins use **Treesitter**
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
           },
         },
-        presets = {
-          lsp_doc_border = true,
-        },
+        presets = { lsp_doc_border = true },
         routes = { {
           view = "notify",
           filter = { event = "msg_showmode" },
@@ -413,11 +412,7 @@ require("lazy").setup({
       "mason-org/mason-lspconfig.nvim",
       event = "VeryLazy",
       dependencies = {
-        {
-          "mason-org/mason.nvim",
-          lazy = true,
-          opts = {},
-        },
+        { "mason-org/mason.nvim", lazy = true, opts = {} },
         {
           "neovim/nvim-lspconfig",
           lazy = true,
@@ -449,8 +444,8 @@ require("lazy").setup({
           },
           sections = {
             lualine_a = { "mode" },
-            lualine_b = { },
-            lualine_c = { },
+            lualine_b = {},
+            lualine_c = {},
             lualine_x = { "lsp_status" },
             lualine_y = { "diff", "diagnostics" },
             lualine_z = { "location" },
