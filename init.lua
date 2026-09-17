@@ -397,7 +397,7 @@ require("lazy").setup({
           change    = { text = '~' },
           delete    = { text = 'd_' },
           topdelete = { text = 'd‾' },
-          untracked = { text = '┆' },
+          untracked = { text = 'n' },
         },
       },
       keys = {
