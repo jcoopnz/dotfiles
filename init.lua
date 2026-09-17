@@ -318,14 +318,6 @@ require("lazy").setup({
     },
 
     {
-      'andymass/vim-matchup',
-      event = "VeryLazy",
-      opts = {
-        treesitter = { stopline = 500 }
-      }
-    },
-
-    {
       "nvim-mini/mini.nvim",
       version = false,
       event = "VeryLazy",
