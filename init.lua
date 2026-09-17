@@ -343,11 +343,12 @@ require("lazy").setup({
     },
 
     {
-      "echasnovski/mini.nvim",
+      "nvim-mini/mini.nvim",
       version = false,
       event = "VeryLazy",
       config = function()
         require("mini.ai").setup()
+        require("mini.completion").setup()
         require("mini.icons").setup()
         require("mini.move").setup({
           mappings = {
@@ -510,22 +511,6 @@ require("lazy").setup({
           },
         }
       end,
-    },
-
-    {
-      "saghen/blink.cmp",
-      version = "1.*",
-      event = "VeryLazy",
-      dependencies = {
-        { "rafamadriz/friendly-snippets", lazy = true },
-      },
-      opts = {
-        keymap = { preset = "default" },
-        fuzzy = { implementation = "prefer_rust" },
-        sources = {
-          default = { 'lsp', 'path', 'snippets', 'buffer' },
-        },
-      },
     },
 
     {
