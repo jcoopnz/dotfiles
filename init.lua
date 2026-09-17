@@ -267,28 +267,9 @@ require("lazy").setup({
       build = ":TSUpdate",
       config = function()
         require("nvim-treesitter").install({
-          "angular",
-          "bash",
-          "css",
-          "git_config",
-          "git_rebase",
-          "gitignore",
-          "go",
-          "html",
-          "http",
-          "javascript",
-          "json",
-          "lua",
-          "markdown",
-          "markdown_inline",
-          "pug",
-          "regex",
-          "scss",
-          "svelte",
-          "tsx",
-          "typescript",
-          "vim",
-          "yaml"
+          "angular", "bash", "css", "git_config", "git_rebase", "gitignore", "go",
+          "html", "http", "javascript", "json", "lua", "markdown", "markdown_inline",
+          "pug", "regex", "scss", "svelte", "tsx", "typescript", "vim", "yaml"
         })
       end,
     },
