@@ -180,6 +180,7 @@ require("lazy").setup({
           },
           sources = {
             explorer = {
+              auto_close = true,
               layout = {
                 layout = { width = 60 }
               },
