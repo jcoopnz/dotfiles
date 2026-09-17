@@ -461,27 +461,18 @@ require("lazy").setup({
       "nvim-lualine/lualine.nvim",
       event = "VeryLazy",
       opts = function()
-        local noice = require("noice")
         return {
           options = {
             theme = 'tokyonight',
             globalstatus = true,
-            disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+            disabled_filetypes = { statusline = { "snacks_dashboard" } },
           },
           sections = {
             lualine_a = { "mode" },
-            lualine_b = { "diff", "diagnostics" },
-            lualine_c = { "", { "filename", path = 1, shorting_target = 60 } },
-            lualine_x = {
-              {
-                ---@diagnostic disable-next-line
-                noice.api.status.command.get,
-                ---@diagnostic disable-next-line
-                cond = noice.api.status.command.has,
-                color = { fg = "#ff9e64" },
-              },
-              "lsp_status"
-            },
+            lualine_b = { },
+            lualine_c = { },
+            lualine_x = { "lsp_status" },
+            lualine_y = { "diff", "diagnostics" },
             lualine_z = { "location" },
           },
         }
