@@ -446,7 +446,10 @@ require("lazy").setup({
             lualine_a = { "mode" },
             lualine_b = { {
               "filename",
-              path = 1
+              path = 1,
+              cond = function()
+                return not vim.bo.filetype:match('^snacks_') and vim.bo.buftype ~= 'nofile'
+              end,
             } },
             lualine_c = {},
             lualine_x = { "lsp_status" },
