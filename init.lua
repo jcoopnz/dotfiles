@@ -107,6 +107,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- prevent mini.completion in snacks temp buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "snacks_picker_input",
+  callback = function()
+    vim.b.minicompletion_disable = true
+  end,
+})
+
 -- inline diagnostic messages
 vim.diagnostic.config({
   virtual_text = { spacing = 4, prefix = "•", source = "if_many" },
